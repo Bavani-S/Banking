@@ -9,6 +9,8 @@ import java.util.function.Function;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.banking.authservice.model.AuthResponse;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -68,5 +70,27 @@ public class AuthService {
 	private Date extractExpiration(String token) {
 		return extractClaim(token, Claims::getExpiration);
 	}
-
+	
+	public AuthResponse validate(String token) {
+		AuthResponse authenticationResponse = new AuthResponse();
+		String jwt = token.substring(7);
+		if (validateAuthToken(jwt)) {
+			authenticationResponse.setId(extractUsername(jwt));
+			System.out.println("userid:"+authenticationResponse.getId());
+			authenticationResponse.setValid(true);
+			} else {
+			authenticationResponse.setValid(false);
+		}
+		return authenticationResponse;
+	}
+	
+	public boolean validateAuthToken(String token) {
+		try {
+			Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
+			return true;
+		}
+		catch(Exception e) {
+			return false;
+		}
+	}
 }

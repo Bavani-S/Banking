@@ -11,4 +11,6 @@ import com.banking.authservice.model.UserDetail;
 public interface UserRepository extends JpaRepository<UserDetail, Long> {
 
 	Optional<UserDetail> findByUserName(String userName);
+	
+	void deleteByUserName(String userName);
 }

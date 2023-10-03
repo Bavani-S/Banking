@@ -22,10 +22,9 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	private PasswordEncoder encoder;
 
-	public String addUser(UserDetail userDetail) {
+	public UserDetail addUser(UserDetail userDetail) {
 		userDetail.setPassword(encoder.encode(userDetail.getPassword()));
-		userRepository.save(userDetail);
-		return "User Added Successfully";
+		return userRepository.save(userDetail);
 	}
 
 	@Override
@@ -37,6 +36,10 @@ public class UserService implements UserDetailsService {
 
 	public List<UserDetail> getAll() {
 		return userRepository.findAll();
+	}
+
+	public void deleteUser(String userName) {
+		userRepository.deleteByUserName(userName);
 	}
 
 }
