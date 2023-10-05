@@ -63,13 +63,13 @@ public class UserController {
 //		return userService.addUser(userDetail);
 //	}
 
-	@GetMapping("/user/employee")
+	@GetMapping("/employee")
 	@PreAuthorize("hasAuthority('ROLE_EMPLOYEE')")
 	public String employeeAccess() {
 		return "Welcome to employee dashboard!";
 	}
 
-	@GetMapping("/user/customer")
+	@GetMapping("/customer")
 	@PreAuthorize("hasAuthority('ROLE_CUSTOMER')")
 	public String customerAccess() {
 		return "Welcome to customer dashboard!";
