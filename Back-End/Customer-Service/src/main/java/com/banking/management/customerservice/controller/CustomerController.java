@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,43 +43,28 @@ public class CustomerController {
 	}
 
 	@GetMapping("/all")
-	public List<CustomerDetail> getAllCustomers() {
-		return customerService.getAll();
+	public ResponseEntity<List<CustomerDetail>> getAllCustomers(@RequestHeader("Authorization") String token) {
+		return customerService.getAll(token);
 	}
 
 	@GetMapping("/{customerId}")
-	public CustomerDetail getCustomer(@PathVariable Long customerId) {
-		return customerService.getCustomer(customerId);
+	public ResponseEntity<CustomerDetail> getCustomer(@RequestHeader("Authorization") String token, @PathVariable Long customerId) {
+		return customerService.getCustomer(token, customerId);
 	}
 
 	@PostMapping("/create")
-	public ResponseEntity<CustomerDetail> createCustomer(@RequestBody CustomerDetail customerDetail) {
-		CustomerDetail createdCustomer;
-		try {
-			createdCustomer = customerService.createCustomer(customerDetail);
-			return new ResponseEntity<CustomerDetail>(createdCustomer, HttpStatus.CREATED);
-		} catch (Exception e) {
-			log.error(e.getMessage());
-		}
-		return new ResponseEntity<CustomerDetail>(customerDetail, HttpStatus.BAD_REQUEST);
+	public ResponseEntity<CustomerDetail> createCustomer(@RequestHeader("Authorization") String token, @RequestBody CustomerDetail customerDetail) {
+		return customerService.createCustomer(token, customerDetail);
 	}
 
 	@PutMapping("/{customerId}/update")
-	public ResponseEntity<CustomerDetail> updateCustomer(@PathVariable Long customerId,
+	public ResponseEntity<CustomerDetail> updateCustomer(@RequestHeader("Authorization") String token, @PathVariable Long customerId,
 			@RequestBody CustomerDetail updateDetail) {
-		CustomerDetail updatedCustomer = customerService.updateCustomer(updateDetail);
-		if (updatedCustomer != null) {
-			return new ResponseEntity<CustomerDetail>(updatedCustomer, HttpStatus.CREATED);
-		}
-		return new ResponseEntity<CustomerDetail>(updatedCustomer, HttpStatus.NOT_FOUND);
+		return customerService.updateCustomer(token, updateDetail);
 	}
 
 	@DeleteMapping("/{customerId}/delete")
-	public ResponseEntity deleteCustomer(@PathVariable Long customerId) {
-		if (customerService.getCustomer(customerId) != null) {
-			customerService.deleteCustomer(customerId);
-			return new ResponseEntity<>(HttpStatus.OK);
-		}
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	public ResponseEntity<?> deleteCustomer(@RequestHeader("Authorization") String token, @PathVariable Long customerId) {
+		return customerService.deleteCustomer(token, customerId);
 	}
 }

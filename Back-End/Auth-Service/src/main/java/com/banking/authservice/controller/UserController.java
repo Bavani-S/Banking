@@ -11,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
+//@CrossOrigin(origins="*")
 @RequestMapping("/auth")
 public class UserController {
 
@@ -88,7 +90,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/new")
-	@PreAuthorize("hasAuthority('ROLE_EMPLOYEE')")
+	//@PreAuthorize("hasAuthority('ROLE_EMPLOYEE')")
 	public ResponseEntity<?> addUser(@RequestBody UserDetail userDetail) {
 		return new ResponseEntity<>(userService.addUser(userDetail),HttpStatus.CREATED);
 	}
@@ -113,14 +115,14 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/deleteUser/{id}")
-	@PreAuthorize("hasAuthority('ROLE_EMPLOYEE')")
+	//@PreAuthorize("hasAuthority('ROLE_EMPLOYEE')")
 	@ResponseStatus(code = HttpStatus.OK)
 	public ResponseEntity<?> deleteUser(@RequestHeader("Authorization") String token, @PathVariable String id) {
 
 		System.out.println("Starting deletion of->" + id);
 		userService.deleteUser(id);
 		System.out.println("Deleted");
-		return new ResponseEntity<>("User Deleted", HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

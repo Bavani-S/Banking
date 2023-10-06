@@ -32,7 +32,6 @@ public class CustomerDetail {
 	private String lastName;
 	@Column(name = "user_name")
 	private String userName;
-	@JsonIgnore
 	private String password;
 	private String address;
 	private String state;
