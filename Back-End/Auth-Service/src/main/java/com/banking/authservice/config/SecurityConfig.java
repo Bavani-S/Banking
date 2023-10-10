@@ -22,32 +22,26 @@ import com.banking.authservice.service.UserService;
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
-	
+
 	@Autowired
 	private AuthFilter authFilter;
-	
+
 	@Bean
 	public UserDetailsService userDetailsService() {
 		return new UserService();
 	}
-	
+
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-		return httpSecurity.csrf().disable()
-				.authorizeHttpRequests()
-				.requestMatchers("/auth/health","/auth/new","/auth/authenticate","/auth/login","/auth/validateToken").permitAll()
-				.and()
-				.authorizeHttpRequests().requestMatchers("/auth/customer/**").authenticated()
-				.and()
-				.authorizeHttpRequests().requestMatchers("/auth/employee/**").authenticated()
-				.and()
-				.authorizeHttpRequests().requestMatchers("/auth/all").authenticated()
-				.and()
-				.authorizeHttpRequests().requestMatchers("/auth/deleteUser/**").authenticated()
-				.and()
+		return httpSecurity.csrf().disable().authorizeHttpRequests()
+				.requestMatchers("/auth/health", "/auth/new", "/auth/authenticate", "/auth/login",
+						"/auth/validateToken", "/swagger-ui/**")
+				.permitAll().and().authorizeHttpRequests().requestMatchers("/auth/customer/**").authenticated().and()
+				.authorizeHttpRequests().requestMatchers("/auth/employee/**").authenticated().and()
+				.authorizeHttpRequests().requestMatchers("/auth/all").authenticated().and().authorizeHttpRequests()
+				.requestMatchers("/auth/deleteUser/**").authenticated().and()
 				.authenticationProvider(authenticationProvider())
-				.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
-				.build();
+				.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class).build();
 	}
 
 	@Bean
@@ -62,12 +56,10 @@ public class SecurityConfig {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Bean
 	public AuthenticationManager authManager(AuthenticationConfiguration config) throws Exception {
 		return config.getAuthenticationManager();
 	}
-	
-	
-	
+
 }

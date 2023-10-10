@@ -4,6 +4,7 @@ package com.banking.authservice.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -46,10 +47,13 @@ public class UserController {
 	
 	@Autowired
 	private AuthService authService;
+	
+	@Value("${central.config:Unable to connect to central config server}")
+	private String centralConfig;
 
 	@GetMapping("/health")
 	public String healthCheck() {
-		return "Auth service is up";
+		return "Auth service is up "+ this.centralConfig;
 
 	}
 	

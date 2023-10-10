@@ -19,6 +19,8 @@ import com.banking.management.customerservice.model.CustomerDetail;
 import com.banking.management.customerservice.proxy.AuthServiceProxy;
 import com.banking.management.customerservice.service.CustomerDetailService;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -28,18 +30,13 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerDetailService customerService;
-	
+
 	@Autowired
 	private AuthServiceProxy authProxy;
 
 	@GetMapping("/health")
 	public String health() {
 		return "Customer service is up";
-	}
-	
-	@GetMapping("/auth-check")
-	public String authProxyhealth() {
-		return authProxy.healthCheck();
 	}
 
 	@GetMapping("/all")
@@ -48,23 +45,44 @@ public class CustomerController {
 	}
 
 	@GetMapping("/{customerId}")
-	public ResponseEntity<CustomerDetail> getCustomer(@RequestHeader("Authorization") String token, @PathVariable Long customerId) {
+	public ResponseEntity<CustomerDetail> getCustomer(@RequestHeader("Authorization") String token,
+			@PathVariable Long customerId) {
 		return customerService.getCustomer(token, customerId);
 	}
 
 	@PostMapping("/create")
-	public ResponseEntity<CustomerDetail> createCustomer(@RequestHeader("Authorization") String token, @RequestBody CustomerDetail customerDetail) {
+	public ResponseEntity<CustomerDetail> createCustomer(@RequestHeader("Authorization") String token,
+			@RequestBody CustomerDetail customerDetail) {
 		return customerService.createCustomer(token, customerDetail);
 	}
 
 	@PutMapping("/{customerId}/update")
-	public ResponseEntity<CustomerDetail> updateCustomer(@RequestHeader("Authorization") String token, @PathVariable Long customerId,
-			@RequestBody CustomerDetail updateDetail) {
+	public ResponseEntity<CustomerDetail> updateCustomer(@RequestHeader("Authorization") String token,
+			@PathVariable Long customerId, @RequestBody CustomerDetail updateDetail) {
 		return customerService.updateCustomer(token, updateDetail);
 	}
 
 	@DeleteMapping("/{customerId}/delete")
-	public ResponseEntity<?> deleteCustomer(@RequestHeader("Authorization") String token, @PathVariable Long customerId) {
+	public ResponseEntity<?> deleteCustomer(@RequestHeader("Authorization") String token,
+			@PathVariable Long customerId) {
 		return customerService.deleteCustomer(token, customerId);
+	}
+
+	@GetMapping("/auth-check")
+	@CircuitBreaker(name = "auth-api", fallbackMethod = "fallbackMethod")
+	public String authProxyhealth() {
+		log.info("auth proxy api call");
+		return authProxy.healthCheck();
+	}
+
+	@GetMapping("/auth-check-retry")
+	@Retry(name = "auth-api", fallbackMethod = "fallbackMethod")
+	public String authProxyhealthRetry() {
+		log.info("auth proxy api call");
+		return authProxy.healthCheck();
+	}
+
+	public String fallbackMethod(Exception e) {
+		return "Auth Service not available!";
 	}
 }
