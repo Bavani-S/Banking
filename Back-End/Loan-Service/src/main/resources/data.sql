@@ -1,0 +1,10 @@
+INSERT INTO `loan_ms`.`loan_type` (`loan_type`, `max_duration`, `rate_of_interest`) VALUES ('Home Loan', '240', '8.25');
+INSERT INTO `loan_ms`.`loan_type` (`loan_type`, `max_duration`, `rate_of_interest`) VALUES ('Business Loan', '36', '12.00');
+INSERT INTO `loan_ms`.`loan_type` (`loan_type`, `max_duration`, `rate_of_interest`) VALUES ('Personal Loan', '36', '10.25');
+INSERT INTO `loan_ms`.`loan_type` (`loan_type`, `max_duration`, `rate_of_interest`) VALUES ('Gold Loan', '12', '9.75');
+INSERT INTO `loan_ms`.`loan_type` (`loan_type`, `max_duration`, `rate_of_interest`) VALUES ('Vehicle Loan( Four wheeler)', '36', '8.50');
+INSERT INTO `loan_ms`.`loan_type` (`loan_type`, `max_duration`, `rate_of_interest`) VALUES ('Vehicle Loan( Two wheeler)', '36', '13.00');
+INSERT INTO `loan_ms`.`loan_type` (`loan_type`, `max_duration`, `rate_of_interest`) VALUES ('Mortgage Loan', '60', '10.20');
+INSERT INTO `loan_ms`.`loan_type` (`loan_type`, `max_duration`, `rate_of_interest`) VALUES ('Education Loan', '60', '9.20');
+INSERT INTO `loan_ms`.`loan_type` (`loan_type`, `max_duration`, `rate_of_interest`) VALUES ('Small Business Loan', '60', '12.20');
+INSERT INTO `loan_ms`.`loan_type` (`loan_type`, `max_duration`, `rate_of_interest`) VALUES ('Agriculture Loan', '24', '8.25');
