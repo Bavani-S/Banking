@@ -14,7 +14,7 @@ public class ApiGatewayRouterConfiguration {
 				.route(p -> p.path("/auth/**").uri("lb://auth-service"))
 				.route(p-> p.path("/user/**").uri("lb://customer-service"))
 				.route(p-> p.path("/account/**").uri("lb://account-service"))
-				.route(p-> p.path("/loan/**").uri("lb://=loan-service"))
+				.route(p-> p.path("/loan/**").uri("lb://loan-service"))
 				.build();			
 	}
 }

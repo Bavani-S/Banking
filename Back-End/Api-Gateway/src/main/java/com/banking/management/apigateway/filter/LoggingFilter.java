@@ -10,14 +10,15 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 @Component
-public class LoggingFilter implements GlobalFilter{
-	
+public class LoggingFilter implements GlobalFilter {
+
 	private Logger logger = LoggerFactory.getLogger(LoggingFilter.class);
 
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-		logger.info("Request URI: {}",exchange.getRequest().getURI());
-		logger.info("Request remoteAddress : {}",exchange.getRequest().getRemoteAddress());
+		logger.info("Request URI: {}", exchange.getRequest().getURI());
+		logger.info("Request remoteAddress : {}", exchange.getRequest().getRemoteAddress());
+		logger.info("Response : {}", exchange.getResponse().toString());
 		return chain.filter(exchange);
 	}
 
