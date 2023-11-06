@@ -27,10 +27,10 @@ The following section will cover aspects related to Bank Management System.
 Note: Please make sure the database credentials are correct before running the applications
 
 ## URLs
-Front-end app: http://localhost:3000/
-Service Discovery (Eureka) : http://localhost:8761
-Api gateway : http://localhost:8765/
-Swagger: 
+- Front-end app: http://localhost:3000/
+- Service Discovery (Eureka) : http://localhost:8761
+- Api gateway : http://localhost:8765/
+- Swagger: 
 1. Auth Service: http://localhost:8100/swagger-ui/index.html
 2. Customer Service: http://localhost:8200/swagger-ui/index.html
 3. Account Service: http://localhost:8300/swagger-ui/index.html
