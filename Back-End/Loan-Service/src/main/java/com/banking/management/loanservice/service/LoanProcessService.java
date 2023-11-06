@@ -148,6 +148,7 @@ public class LoanProcessService {
 		if (loanDetails.hasBody()) {
 			LoanDetail confirmLoan = loanDetails.getBody();
 			confirmLoan.setLoanStatus(LoanStatus.PENDINGFORREVIEW);
+			confirmLoan.setApplyDate(new Date());
 			confirmLoan.setDate(new Date());
 			return new ResponseEntity<LoanDetail>(loanRepository.save(confirmLoan), HttpStatus.OK);
 		}

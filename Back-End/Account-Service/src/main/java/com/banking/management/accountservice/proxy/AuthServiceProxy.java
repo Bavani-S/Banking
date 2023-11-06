@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 
 import com.banking.management.accountservice.model.AuthResponse;
 
-@FeignClient(name = "auth-service", url = "http://localhost:8100/auth/")
+@FeignClient(name = "auth-service", url = "${feign.client.url.auth}")
 public interface AuthServiceProxy {
 
 	@GetMapping("/health")

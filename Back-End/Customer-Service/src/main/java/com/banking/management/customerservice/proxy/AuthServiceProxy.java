@@ -14,7 +14,7 @@ import com.banking.management.customerservice.model.AuthResponse;
 import com.banking.management.customerservice.model.LoginResponse;
 import com.banking.management.customerservice.model.UserDetail;
 
-@FeignClient(name = "auth-service", url = "http://localhost:8100/auth/")
+@FeignClient(name = "auth-service", url = "${feign.client.url.auth}")
 public interface AuthServiceProxy {
 
 	@GetMapping("/health")

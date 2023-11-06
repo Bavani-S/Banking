@@ -49,6 +49,17 @@ public class CustomerDetailService {
 		}
 		return new ResponseEntity<CustomerDetail>(HttpStatus.UNAUTHORIZED);
 	}
+	
+	public ResponseEntity<CustomerDetail> getCustomerByUserName(String token,String userName) {
+		if(hasPermission(token).isValid()) {
+			Optional<CustomerDetail> customer = customerRepository.findByUserName(userName);
+			if(customer.isPresent()) {
+				return new ResponseEntity<CustomerDetail>(customer.get(),HttpStatus.OK);
+			}
+			return new ResponseEntity<CustomerDetail>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<CustomerDetail>(HttpStatus.UNAUTHORIZED);
+	}
 
 	public ResponseEntity<CustomerDetail> createCustomer(String token, CustomerDetail customerDetail){
 		try {
@@ -73,7 +84,6 @@ public class CustomerDetailService {
 		if(status == HttpStatus.OK.value()) {
 			CustomerDetail existingUser = existingUserResponse.getBody();
 			log.info(existingUser.toString());
-			existingUser.setAccount(updateDetail.getAccount());
 			existingUser.setAddress(updateDetail.getAddress());
 			existingUser.setContactNumber(updateDetail.getContactNumber());
 			existingUser.setCountry(updateDetail.getCountry());
@@ -85,6 +95,9 @@ public class CustomerDetailService {
 			existingUser.setPassword(updateDetail.getPassword());
 			existingUser.setState(updateDetail.getState());
 			existingUser.setUserName(updateDetail.getUserName());
+			existingUser.setIdProofType(updateDetail.getIdProofType());
+			existingUser.setIdProofNumber(updateDetail.getIdProofNumber());
+			existingUser.setCitizenStatus(updateDetail.getCitizenStatus());
 			return new ResponseEntity<CustomerDetail>(customerRepository.save(existingUser),HttpStatus.OK);
 		}
 		return existingUserResponse;

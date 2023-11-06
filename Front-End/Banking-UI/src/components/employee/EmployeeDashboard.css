@@ -1,0 +1,14 @@
+.custom-border {
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.text-container2 {
+  background-color: #5ea4ea7f;
+  border-radius: 8px;
+  padding: 2px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.emp-dash-cont {
+  margin-top: 100px;
+}

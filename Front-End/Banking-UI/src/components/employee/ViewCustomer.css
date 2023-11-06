@@ -1,0 +1,110 @@
+.search-button {
+  margin-left: 20px;
+}
+
+.cus-id {
+  margin-right: 20px;
+}
+
+.view-cus-head {
+  margin-left: 120px;
+  font-family: sans-serif;
+  color: rgb(76, 124, 197);
+  text-align: center;
+  padding-right: 200px;
+  padding-top: 30px;
+}
+
+.customer-services-container {
+  margin-left: 180px;
+}
+
+.img-position {
+  margin-top: -60px;
+}
+
+.not-found {
+  font-family: sans-serif;
+  color: rgb(76, 124, 197);
+  font-size: 30px;
+}
+
+.nodata-img {
+  margin-left: 490px;
+}
+
+ul.custom-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-list li {
+  text-decoration: none;
+}
+ul.custom-list li a {
+  text-decoration: none;
+  color: black;
+}
+
+.cursor {
+  cursor: pointer;
+}
+.custom-list-container {
+  display: flex; /* Use flexbox to center the list horizontally */
+  justify-content: center; /* Center the list horizontally within the container */
+  margin-top: 30px; /* Adjust the top margin as needed */
+  margin-bottom: 35px;
+}
+
+.custom-list {
+  display: flex; /* Use flexbox to display items in a row */
+  list-style: none; /* Remove default list styles */
+  padding: 0; /* Remove any padding */
+}
+
+.icon-container {
+  position: relative; /* Set the position of the container to relative */
+  margin-left: 10px; /* Add a left margin of 10px */
+  margin-right: 10px;
+}
+
+.icon {
+  display: flex; /* To vertically center the icon and text */
+  flex-direction: column; /* Display the icon and text vertically */
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text horizontally */
+}
+
+.text {
+  position: absolute; /* Set the position of the text to absolute */
+  bottom: -40px; /* Adjust the vertical position of the text as needed */
+  left: 50%; /* Center the text horizontally within the container */
+  transform: translateX(-50%); /* Center the text horizontally */
+  /* background-color: #fff; */
+  white-space: nowrap;
+  padding: 5px; /* Add padding to the text */
+  display: none; /* Hide the text by default */
+}
+
+.icon-container:hover .text {
+  display: block; /* Show the text when hovering over the container */
+}
+
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+select {
+  padding-right: 30px; /* Adjust the value as needed to make space for the arrow */
+  appearance: none; /* Hide the default dropdown arrow in some browsers */
+  -webkit-appearance: none; /* Hide the default dropdown arrow in WebKit browsers */
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust the right value to position the arrow as desired */
+  transform: translateY(-50%);
+}

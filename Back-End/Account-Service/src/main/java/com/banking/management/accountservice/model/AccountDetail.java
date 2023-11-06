@@ -30,7 +30,6 @@ public class AccountDetail {
 	private BigDecimal openingAmount;
 	private BigDecimal currentBalance;
 	private LocalDate openingDate;
-	@Transient
-	private List<Transaction> transactions;
+	private String branchName;
 
 }

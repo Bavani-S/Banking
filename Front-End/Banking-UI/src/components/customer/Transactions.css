@@ -1,0 +1,17 @@
+.table-container {
+  margin-left: 60px;
+}
+
+.t-heading {
+  font-family: sans-serif;
+  color: rgb(76, 124, 197);
+}
+
+.trans-form {
+  padding-bottom: 30px;
+  padding-top: 20px;
+  padding-left: 45px;
+  background-color: rgba(3, 98, 252, 0.275);
+  border-radius: 0.5em;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
+}

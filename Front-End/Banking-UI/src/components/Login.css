@@ -1,0 +1,31 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.navbar {
+  padding: 20px 0;
+  height: 77px;
+  background-color: rgb(76, 124, 197);
+}
+
+.navbar a {
+  font-size: 20px;
+}
+
+.login-box {
+  background-color: rgba(3, 98, 252, 0.275);
+  height: 430px;
+  border-radius: 1em;
+}
+
+.login-form {
+  margin: 30px;
+}
+
+.login-heading {
+  color: rgb(0, 0, 128);
+}

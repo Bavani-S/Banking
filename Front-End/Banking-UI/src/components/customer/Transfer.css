@@ -1,0 +1,19 @@
+.heading2 {
+  margin-top: 65px;
+  font-family: sans-serif;
+  /* color: rgb(76, 124, 197); */
+  color: rgb(0, 0, 128);
+  margin-left: 120px;
+  margin-bottom: 40px;
+}
+.button-space {
+  margin-right: 20px;
+}
+
+.container-form2 {
+  height: 500px;
+  margin-left: 100px;
+  background-color: rgba(3, 98, 252, 0.275);
+  border-radius: 0.5em;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
+}

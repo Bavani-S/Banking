@@ -1,0 +1,21 @@
+.heading-delete {
+  margin-top: 65px;
+  font-family: sans-serif;
+
+  color: rgb(0, 0, 128);
+
+  margin-left: 80px;
+  margin-bottom: 40px;
+}
+.button-space {
+  margin-right: 20px;
+}
+
+.form-delete {
+  height: 350px;
+
+  margin-left: 100px;
+  background-color: rgba(3, 98, 252, 0.275);
+  border-radius: 0.5em;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
+}

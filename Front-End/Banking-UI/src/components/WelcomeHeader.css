@@ -1,0 +1,30 @@
+
+.navbar {
+  width: 100%;
+  padding: 20px 20px 20px 20px; 
+}
+
+.login-navigate {
+  text-decoration: none;
+  color: whitesmoke;
+}
+.container {
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 0%;
+  max-width: 100%;
+}
+
+.navbar-brand {
+  display: flex;
+  height: 80px;
+}
+
+.profile-img {
+  height: 40px;
+}
+
+.dash {
+  display: flex;
+  align-items: center;
+}

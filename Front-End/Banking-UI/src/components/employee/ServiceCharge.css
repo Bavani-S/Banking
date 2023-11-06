@@ -1,0 +1,10 @@
+.service-head {
+  color: rgb(0, 0, 128);
+  font-family: sans-serif;
+}
+
+.deduct-quote {
+  font-family: sans-serif;
+  font-size: 21px;
+  color: rgb(63, 63, 63);
+}

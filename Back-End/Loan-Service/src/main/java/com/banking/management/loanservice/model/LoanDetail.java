@@ -35,6 +35,7 @@ public class LoanDetail {
 	private LoanType loanType;
 	private BigDecimal loanAmount;
 	private int duration;
+	private Date applyDate;
 	private Date date;
 	private BigDecimal monthlyInstallment;
 	private String collateral;

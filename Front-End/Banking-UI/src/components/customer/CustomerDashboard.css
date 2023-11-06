@@ -1,0 +1,47 @@
+.navbar {
+  padding: 20px 0;
+  height: 77px;
+  background-color: rgb(76, 124, 197);
+}
+
+.navbar a {
+  font-size: 20px;
+}
+
+.box-container {
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-top: 70px;
+}
+
+.each-box {
+  height: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.custom-bg-color {
+  background-color: rgba(76, 124, 197, 0.212);
+}
+
+.text-container {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 2px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.jumbotron {
+  background-color: transparent;
+  padding: 20px;
+}
+
+.jumbotron h6 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+
+.jumbotron p {
+  font-size: 1.2rem;
+}

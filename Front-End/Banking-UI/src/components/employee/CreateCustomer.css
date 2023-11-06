@@ -1,0 +1,29 @@
+.createCustomer-img-container {
+  margin-left: 50px;
+}
+
+.create-customer-form {
+  margin-left: 60px;
+}
+
+.form-bg {
+  background-color: rgba(3, 98, 252, 0.275);
+  margin-bottom: 45px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
+  border-radius: 0.5em;
+}
+
+.form-grp {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+.btn2 {
+  margin-left: 2px;
+}
+
+.create-cus-head {
+  font-family: sans-serif;
+
+  color: rgb(0, 0, 128);
+}

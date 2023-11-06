@@ -40,7 +40,7 @@ public class CustomerDetail {
 	private String panNumber;
 	private String contactNumber;
 	private Date dateOfBirth;
-	@Column(name = "account_id")
-	private Long account;
-
+	private String idProofType;
+	private String idProofNumber;
+	private String citizenStatus;
 }
